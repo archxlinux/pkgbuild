@@ -7,7 +7,7 @@ steps:
     pull: always
     privileged: true
     commands:
-      - yes|sudo pacman -Sy git wget strip-nondeterminism
+      - yes | pacman -Sy git wget strip-nondeterminism
       - cp makepkg /usr/bin
       - echo -e $SIGNATURE | gpg --import
       - ./build.sh || true
