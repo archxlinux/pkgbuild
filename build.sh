@@ -14,7 +14,7 @@ for package_dir in */; do
     # Rebuild and install the package with makepkg -s
     yes|makepkg -S -s -f -C -c --sign --key DA6BDDD08D26A04AAC997968C79769BC07914012 
 
-    find . -maxdepth 1 -type f -name "*.pkg.tar.*" -exec mv {} /tmp/cache/ \;
+    find . -maxdepth 1 -type f -name "*.tar.*" -exec mv {} /tmp/cache/ \;
 
     # Move back to the parent directory for the next iteration
     cd ..
