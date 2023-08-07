@@ -7,7 +7,7 @@ steps:
     pull: always
     privileged: true
     commands:
-      - yes | pacman -Sy git wget elfkickers fakeroot gzip 
+      - yes | pacman -Sy git wget base-devel
       - cp makepkg /usr/bin
       - echo -e $SIGNATURE | gpg --import
       - ./build.sh || true
