@@ -10,7 +10,7 @@ steps:
       - yes | pacman -Sy git wget base-devel
       - cp makepkg /usr/bin
       - echo -e $SIGNATURE | gpg --import
-      - ./build.sh || true
+      - bash -x ./build.sh || true
     environment:
       SIGNATURE:
         from_secret: signature
