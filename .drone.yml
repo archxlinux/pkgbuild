@@ -1,0 +1,26 @@
+kind: pipeline
+name: build and publish
+
+steps:
+  - name: build
+    image: archxlinux/archxlinux
+    pull: always
+    privileged: true
+    commands:
+      - yes|sudo pacman -Sy git wget
+      - cp makepkg /usr/bin
+      - echo -e $SIGNATURE | gpg --import
+      - sudo -s -u drone ./build.sh || true
+      - sudo chown -R root:root /drone/src/
+      - ls -la && pwd
+    environment:
+      SIGNATURE:
+        from_secret: signature
+    volumes:
+      - name: cache
+        path: /tmp/cache
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache

@@ -1,0 +1,22 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+# Maintainer: Alessio <alessio@linux.com> 
+
+pkgname=archxlinux-keyring
+pkgver=20240801
+pkgrel=2
+pkgdesc='Archx Linux PGP keyring'
+arch=('any')
+url='https://github.com/archxlinux'
+license=('GPL')
+install="${pkgname}.install"
+source=('Makefile' 'archxlinux.gpg' 'archxlinux-trusted' 'archxlinux-revoked')
+sha256sums=('6eb95255a2cfb63c67b7ea525b4579f1cf96a7e3386375e9efc6682be683ad46'
+            '57c8fcf95ffcd29818d94b8de1dcb9bfba54fd8b40530783a15323ff76fecef2'
+            'f9cf1158bba1880baf302f13202d4a60e42641723c7fe8bcc8acb44b5449ee5a'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')  
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}
