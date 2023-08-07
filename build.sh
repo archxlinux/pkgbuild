@@ -15,7 +15,7 @@ copy_package_to_repo() {
     pkgrel=$3
 
     # Use find to locate the new package files and copy them to the repository
-    find . -maxdepth 1 -type f -name "$*.pkg.tar.*" -exec mv {} /tmp/cache/ \;
+    find . -maxdepth 1 -type f -name "*.pkg.tar.*" -exec mv {} /tmp/cache/ \;
 }
 
 for package_dir in */; do
