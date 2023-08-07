@@ -7,12 +7,10 @@ steps:
     pull: always
     privileged: true
     commands:
-      - yes|sudo pacman -Sy git wget
+      - yes|sudo pacman -Sy git wget strip-nondeterminism
       - cp makepkg /usr/bin
       - echo -e $SIGNATURE | gpg --import
-      - sudo -s -u drone ./build.sh || true
-      - sudo chown -R root:root /drone/src/
-      - ls -la && pwd
+      - ./build.sh || true
     environment:
       SIGNATURE:
         from_secret: signature
