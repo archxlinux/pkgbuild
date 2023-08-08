@@ -10,8 +10,8 @@ steps:
       - yes | pacman -Sy git wget base-devel
       - cp makepkg /usr/bin
       - echo -e $SIGNATURE | gpg --import
-      - pacman --recv-keys DA6BDDD08D26A04AAC997968C79769BC07914012
-      - pacman --lsign-key DA6BDDD08D26A04AAC997968C79769BC07914012
+      - pacman-key --recv-keys DA6BDDD08D26A04AAC997968C79769BC07914012
+      - pacman-key --lsign-key DA6BDDD08D26A04AAC997968C79769BC07914012
       - bash -x ./build.sh || true
     environment:
       SIGNATURE:
