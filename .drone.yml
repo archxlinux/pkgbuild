@@ -7,7 +7,9 @@ steps:
     pull: always
     privileged: true
     commands:
-      - yes | pacman -Sy git wget base-devel
+      - pacman-key --recv-keys 7CE735AE27960124DC20549D842ABE3AA3C5FCD7
+      - pacman-key --lsign-key 7CE735AE27960124DC20549D842ABE3AA3C5FCD7
+      - yes | pacman -Sy git wget base-devel archxlinux-keyring
       - cp makepkg /usr/bin
       - bash -x ./build.sh || true
     environment:
